@@ -519,7 +519,7 @@ SHOW GRANTS FOR SqlCurso@localhost;
 		##Otorgo permiso de solo lectura en la tabla Peliculas. 
 GRANT SELECT ON peliculas.* TO SqlCurso@localhost;
 		
-		##Otorgo permiso de lectura, insercion y modificacion de datos.. 
-GRANT SELECT, UPDATE, INSERT ON peliculas.* TO cursoSQL@localhost;
+		
+	##Otorgo permiso de lectura, insercion y modificacion de datos.. 
 GRANT SELECT, INSERT ON series_peliculas.actores TO cursoSQL@localhost;
-GRANT SELECT, INSERT ON series_peliculas.series TO cursoSQL@localhost;
+GRANT SELECT, UPDATE, INSERT ON series_peliculas.series TO cursoSQL@localhost;
