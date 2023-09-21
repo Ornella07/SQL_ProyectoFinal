@@ -249,7 +249,29 @@ FROM actores a
 INNER JOIN actua_series asr ON a.id_actor = asr.id_actor;
 SELECT * FROM Vista_ActoresEnAlgunaSerie;
 
-        
+ ## Actores que trabajaron tanto en peliculas como series 
+CREATE VIEW VistaDeActoresEnPeliculasYSeries AS
+SELECT  a.nombre AS nombre,
+		a.apellido,
+		a.edad,
+		'Película' AS tipo_produccion,
+		p.id_pelicula AS id_produccion,
+		p.nombre AS nombre_produccion,
+		p.descripcion
+FROM  actores a
+JOIN    actua_peliculas AP ON a.id_actor = ap.id_actor
+JOIN   pelicula P ON ap.id_pelicula = p.id_pelicula
+UNION ALL
+SELECT   a.nombre AS nombre_actor,
+		a.apellido,
+		a.edad,
+		'Serie' AS tipo_produccion,
+		s.id_serie AS id_produccion,
+		s.nombre AS nombre_produccion,
+		s.descripcion
+FROM   actores a
+JOIN   actua_series AS ase ON a.id_actor = ase.id_actor
+JOIN   serie s ON ase.id_serie = s.id_serie;
         
         
 ## -- CREO FUNCIONES -- ## 
