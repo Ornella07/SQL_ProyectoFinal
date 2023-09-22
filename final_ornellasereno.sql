@@ -272,7 +272,20 @@ SELECT   a.nombre AS nombre_actor,
 FROM   actores a
 JOIN   actua_series AS ase ON a.id_actor = ase.id_actor
 JOIN   serie s ON ase.id_serie = s.id_serie;
-        
+
+
+ ## Creo vista que nos muestra Vista de directores en series
+	CREATE VIEW VistaSeriesDirectores AS 
+    SELECT 
+    S.id_serie,
+    S.nombre AS nombre_serie,
+    S.descripcion,
+    S.episodios,
+    D.nombre AS nombre_director
+    FROM
+    serie S
+    JOIN  director D ON S.id_director = D.id_director;
+    
         
 ## -- CREO FUNCIONES -- ## 
 DELIMITER //
